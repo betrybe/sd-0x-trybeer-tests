@@ -36,14 +36,11 @@ describe('Criar tela de produtos', () => {
   });
 
   it('Será validado que existe todos os produtos na tela de produtos', () => {
-    let nomeProdutos= ['Skol Lata 250ml', 'Heineken 600ml', 'Antarctica Pilsen 300ml', 'Brahma 600ml',
-                       'Skol 269ml', 'Skol Beats Senses 313ml', 'Becks 330ml', 'Brahma Duplo Malte 350ml',
-                       'Becks 600ml', 'Skol Beats Senses 269ml', 'Stella Artois 275ml'];
-    let valorProdutos= ['R$ 2,20', 'R$ 7,50', 'R$ 2,49', '7,50', '2,19', 'R$ 4,49',
-                        '4,99', 'R$ 2,79', '8,89', '3,57', '3,49'];
+    let nomeProdutos= ['Skol Lata 250ml', 'Heineken 600ml', 'Antarctica Pilsen 300ml', 'Brahma 600ml'];
+    let valorProdutos= ['R$ 2,20', 'R$ 7,50', 'R$ 2,49', '7,50'];
     login(Cypress.env('login'), Cypress.env('password'));
 
-    for(var i = 0; i < 11; i++){
+    for(var i = 0; i < 4; i++){
       cy.get(`[data-testid="${i}-product-price"]`).contains(valorProdutos[i]);
       verifyElementVisible(`[data-testid="${i}-product-img"]`);
       cy.get(`[data-testid="${i}-product-name"]`).should('have.text', nomeProdutos[i]);
