@@ -39,9 +39,9 @@ module.exports = (on, config) => {
     }
   });
 
-  on('before:browser:launch', (browser = {}, args) => {
+  on('before:browser:launch', (browser, launchOptions) => {
     if (browser.name === 'chrome') {
-      args.push('--disable-dev-shm-usage');
+      launchOptions.args.push('--disable-dev-shm-usage');
       return args;
     }
     return args;
